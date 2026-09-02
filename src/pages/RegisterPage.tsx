@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { register as registerUser } from '../services/authService'
 import { createUserProfile } from '../services/userService'
+import { useNavigate } from 'react-router'
 
 import {
   registerSchema,
@@ -17,6 +18,8 @@ function RegisterPage() {
     resolver: zodResolver(registerSchema),
   })
 
+  const navigate = useNavigate()
+
   const onSubmit = async (data: RegisterFormData) => {
   try {
     const user = await registerUser(
@@ -30,7 +33,7 @@ function RegisterPage() {
       theme: 'light',
     })
 
-    console.log('Compte créé avec succès')
+    navigate('/profile')
   } catch (error) {
     console.error(error)
   }
