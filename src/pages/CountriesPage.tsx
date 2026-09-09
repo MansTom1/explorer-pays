@@ -104,7 +104,13 @@ function CountriesPage() {
          </div>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {submittedSearch && countries?.length === 0 && (
+          <p className="mb-6 text-center">
+             Aucun pays trouvé pour « {submittedSearch} ».
+          </p>
+        )}
+
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {countries?.map((country) => (
           <CountryCard
             key={country.codes.alpha_3}

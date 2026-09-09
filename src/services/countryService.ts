@@ -8,7 +8,11 @@ interface CountriesResponse {
 }
 
 export async function getCountries(): Promise<Country[]> {
-  const response = await api.get<CountriesResponse>('')
+  const response = await api.get<CountriesResponse>('', {
+    params: {
+      limit: 100,
+    },
+  })
 
   return response.data.data.objects
 }
