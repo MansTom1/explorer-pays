@@ -26,6 +26,7 @@ import RegisterPage from '../pages/RegisterPage'
 import ProfilePage from '../pages/ProfilePage'
 import ProtectedRoute from './ProtectedRoute'
 import LoginPage from '../pages/LoginPage'
+import CountriesPage from '../pages/CountriesPage'
 
 function AppRouter() {
   return (
@@ -42,6 +43,11 @@ function AppRouter() {
           path="/register"
           element={<RegisterPage />}
         />
+        
+        <Route
+          path="/countries"
+          element={<CountriesPage />}
+        />
 
         <Route element={<ProtectedRoute />}>
           <Route
@@ -49,6 +55,7 @@ function AppRouter() {
             element={<ProfilePage />}
           />
         </Route>
+        
       </Routes>
     </BrowserRouter>
   )

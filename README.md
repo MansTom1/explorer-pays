@@ -1,75 +1,85 @@
-# React + TypeScript + Vite
+# Travel Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application web permettant d'explorer des pays et de rechercher des informations sur ceux-ci.
 
-Currently, two official plugins are available:
+## Technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- TanStack Query
+- Axios
+- React Hook Form
+- Zod
+- Firebase
+- REST Countries API
 
-## React Compiler
+## Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Cloner le projet
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/MansTom1/explorer-pays.git
+cd explorer-pays
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Installer les dépendances
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
+
+### 3. Configurer les variables d'environnement
+
+Créer le fichier `.env.local` à partir du fichier `.env.example` :
+
+```bash
+cp .env.example .env.local
+```
+
+Puis renseigner les valeurs nécessaires dans `.env.local` :
+
+```env
+VITE_FIREBASE_API_KEY=
+VITE_FIREBASE_AUTH_DOMAIN=
+VITE_FIREBASE_PROJECT_ID=
+VITE_FIREBASE_STORAGE_BUCKET=
+VITE_FIREBASE_MESSAGING_SENDER_ID=
+VITE_FIREBASE_APP_ID=
+
+VITE_REST_COUNTRIES_API_KEY=
+```
+
+Les valeurs Firebase doivent correspondre à une application Web Firebase configurée pour le projet.
+
+La clé REST Countries doit également être configurée pour autoriser l'utilisation depuis `localhost`.
+
+### 4. Lancer l'application
+
+```bash
+npm run dev
+```
+
+Puis ouvrir l'adresse indiquée par Vite dans le terminal.
+
+## Build
+
+Pour vérifier que le projet peut être compilé :
+
+```bash
+npm run build
+```
+
+## Fonctionnalités actuelles
+
+- Inscription
+- Connexion
+- Déconnexion
+- Réinitialisation du mot de passe
+- Protection de la page profil
+- Récupération des pays depuis REST Countries
+- Recherche de pays
+- Suggestions pendant la saisie
+- Affichage des informations principales d'un pays
